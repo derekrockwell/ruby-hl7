@@ -168,7 +168,7 @@ class HL7::Message
 
   # provide a HL7 spec version of the message
   def to_hl7(terminating_delimeter = true)
-    @segments.collect { |s| s if s.to_s.length > 0 }.join( @delimiter.segment ) + terminating_delimeter ? @delimiter.segment : ""
+    @segments.collect { |s| s if s.to_s.length > 0 }.join( @delimiter.segment ) + (terminating_delimeter ? @delimiter.segment : "")
   end
 
   # provide the HL7 spec version of the message wrapped in MLLP
