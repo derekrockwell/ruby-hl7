@@ -185,7 +185,7 @@ class HL7::Message
     segs = base.children if base
 
     segs.each do |s|
-      if s.kind_of?( last.class ) && s.respond_to?( :set_id )
+      if s.kind_of?(last.class) && last.kind_of?(s.class) && s.respond_to?( :set_id )
         last.set_id = 1 unless last.set_id && last.set_id.to_i > 0
         s.set_id = last.set_id.to_i + 1
       end
